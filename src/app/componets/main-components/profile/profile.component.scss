@@ -1,0 +1,35 @@
+:host ::ng-deep {
+    $main-gray: #F5F5F5;
+    $main-green: #08E6C2;
+    $main-black: #000000;
+    .color-primary {
+        color: #2A47EF !important;
+    }
+    .profile-cover-pic {
+        height: 300px;
+        background-image: url('../../../../assets/img/Aggital-2018-in-Review-7.jpg');
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        background-size: cover !important;
+        position: relative;
+    }
+    .profile-pic {
+        height: 150px;
+        width: 150px;
+        background-image: url('../../../../assets/img/Aggital-2018-in-Review-7.jpg');
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        background-size: cover !important;
+        position: absolute;
+        left: 40%;
+        border-radius: 100px !important;
+        bottom: -100px !important;
+        border: 3px solid #000000;
+    }
+    .box-margin {
+        margin: 4px;
+    }
+    .mat-list-base .mat-list-item .mat-list-item-content {
+        padding: 0 !important;
+    }
+}

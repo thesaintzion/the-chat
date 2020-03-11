@@ -1,0 +1,98 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+        <mat-toolbar class="border-bottom">
+            <div class="d-flex justify-content-between w-100">
+                <div class="user d-flex align-items-center align-content-center ">
+                    <div class="user-pic-con">
+
+                    </div>
+                    <strong class="ml-3">TheChats</strong>
+                </div>
+                <div class="icon-links d-flex align-items-center align-content-center">
+                    <button mat-icon-button class="main-gray-bg justify-content-center d-flex align-items-center align-content-center">
+                        <mat-icon>person</mat-icon>
+                    </button>
+                    <button mat-icon-button class="ml-2 main-gray-bg">
+                        <mat-icon>group</mat-icon>
+                    </button>
+                </div>
+            </div>
+
+        </mat-toolbar>
+        <mat-nav-list>
+            <mat-list>
+                <mat-list-item routerLink="/chat">
+                    <mat-icon mat-list-icon class="user-pic-con"></mat-icon>
+                    <span mat-line>Saint Zion Success</span>
+                    <span mat-line>Online</span>
+                </mat-list-item>
+
+                <mat-list-item routerLink="/chat">
+                    <mat-icon mat-list-icon class="user-pic-con"></mat-icon>
+                    <span mat-line>Saint Zion Success</span>
+                    <span mat-line>Online</span>
+                </mat-list-item>
+
+                <mat-list-item routerLink="/chat">
+                    <mat-icon mat-list-icon class="user-pic-con"></mat-icon>
+                    <span mat-line>Saint Zion Success</span>
+                    <span mat-line>Online</span>
+                </mat-list-item>
+
+            </mat-list>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <mat-toolbar class="bg-white border-bottom">
+            <!-- <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button> -->
+
+            <div class="d-flex justify-content-between w-100">
+                <div class="user  d-flex align-items-center align-content-center ">
+                    <mat-list>
+                        <mat-list-item routerLink="/chat">
+                            <div mat-list-icon (click)="drawer.toggle()" class="user-pic-con">
+
+                            </div>
+                            <span class="user-name text-bolder" mat-line>Saint Zion Success</span>
+                            <span class="user-desc" mat-line>Online</span>
+                        </mat-list-item>
+                    </mat-list>
+                </div>
+                <div class="icon-links d-flex align-items-center align-content-center">
+                    <button #vid mat-icon-button class="ml-3">
+                        <mat-icon>videocam</mat-icon>
+                    </button>
+                    <button mat-icon-button class=" ml-3">
+                        <mat-icon>call</mat-icon>
+                    </button>
+                    <button [matMenuTriggerFor]="userInfo" mat-icon-button class="ml-3">
+                        <mat-icon>info</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </mat-toolbar>
+        <!-- Menu -->
+        <mat-menu #userInfo="matMenu" class="p-0">
+
+            <img style="width: 100%;" mat-card-image src="../../../../assets/img/Aggital-2018-in-Review-6.jpg" alt="User profile">
+            <div class="py-4 px-3">
+                <p>From: *********</p>
+                <p>Occupation: *********</p>
+                <p>Age: *********</p>
+            </div>
+            <div class="text-center pb-2">
+                <button class="main-black-btn" mat-raised-button>View Profile</button>
+            </div>
+
+        </mat-menu>
+        <!-- Add Content Here -->
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+
+<!-- 
+let likesGiven = 0; setInterval(() => { let heart = document.getElementsByClassName('.wpO6b'); let arrow = document.querySelector('.coreSpriteRightPaginationArrow'); heart.click(); arrow.click(); likesGiven++; console.log(`You've liked ${likesGiven} post(s)!`);
+}, 4000); -->

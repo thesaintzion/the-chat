@@ -1,0 +1,30 @@
+:host ::ng-deep {
+    $main-gray: #F5F5F5;
+    $main-green: #08E6C2;
+    $main-black: #000000;
+    .main-layout {
+        background-color: $main-gray;
+        min-height: 100vh;
+    }
+    .mat-toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        .user-pic-con {
+            width: 40px !important;
+            height: 40px !important;
+            border-radius: 100px;
+            background-color: $main-gray;
+        }
+        .icon-con {
+            width: 36px !important;
+            height: 36px !important;
+            border-radius: 100px;
+            background-color: $main-gray;
+        }
+    }
+    .user-pic-con.mat-list-icon {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+}

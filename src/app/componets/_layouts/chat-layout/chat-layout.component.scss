@@ -1,0 +1,62 @@
+:host ::ng-deep {
+    $main-gray: #F5F5F5;
+    $main-green: #08E6C2;
+    $main-black: #000000;
+    .sidenav-container {
+        height: 100%;
+    }
+    .sidenav {
+        width: 369px;
+        .mat-toolbar {
+            background: inherit;
+            .icon-con {
+                width: 36px !important;
+                height: 36px !important;
+                border-radius: 100px;
+                background-color: $main-gray;
+            }
+            .user-pic-con {
+                width: 40px !important;
+                height: 40px !important;
+                border-radius: 100px;
+                background-color: $main-gray;
+            }
+        }
+        .mat-nav-list {
+            .user-pic-con {
+                width: 50px !important;
+                height: 50px !important;
+                border-radius: 100px;
+                background-color: $main-gray;
+            }
+        }
+    }
+    .mat-sidenav-content {
+        .mat-toolbar {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            .user-pic-con {
+                width: 40px !important;
+                height: 40px !important;
+                border-radius: 100px;
+                background-color: $main-gray;
+            }
+            .icon-con {
+                width: 36px !important;
+                height: 36px !important;
+                border-radius: 100px;
+                background-color: $main-gray;
+            }
+            .mat-list-text {
+                span {
+                    line-height: 1.5 !important;
+                }
+            }
+        }
+    }
+    .user-pic-con.mat-list-icon {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+}

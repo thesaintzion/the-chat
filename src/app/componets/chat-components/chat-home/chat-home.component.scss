@@ -1,0 +1,74 @@
+     :host ::ng-deep {
+        $main-gray: #F5F5F5;
+        $main-green: #08E6C2;
+        $main-black: #000000;
+        .chat-box .user-name {
+            margin-bottom: 0;
+            font-size: 17px;
+        }
+        .chat-box .user-name span {
+            font-size: 14px;
+            font-weight: 200;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        .me,
+        .you {
+            padding-top: 10px;
+            padding-bottom: 0 !important;
+            margin-bottom: 10px;
+        }
+        .chat-box .card {
+            border-radius: 20px;
+        }
+        .chat-box .card .card-body {
+            padding: 0.50rem;
+            padding-bottom: 0 !important;
+        }
+        .chat-box .card p {
+            font-size: 14px;
+        }
+        .chat-box .chat-box-inner {
+            display: inline-block;
+            width: auto;
+        }
+        .you {
+            .sent-icon {
+                .mat-icon {
+                    font-size: 18px;
+                    color: #03ecb2;
+                }
+            }
+        }
+        .me {
+            .chat-box .card {
+                background-color: $main-green;
+                color: #ffffff;
+                border: 0;
+            }
+            .sent-icon {
+                .mat-icon {
+                    font-size: 18px;
+                    color: #ffffff;
+                }
+            }
+            .chat-box-inner {
+                border: 1px solid #000;
+            }
+        }
+        .me.image .chat-box .card {
+            background-color: $main-gray;
+            //  background-color: rgb(97, 172, 253);
+            color: #ffffff;
+            border: 0;
+        }
+        .me {
+            justify-content: flex-end !important
+        }
+        .me .chat-box .chat-box-inner {
+            float: right;
+        }
+        .row.animate-custom:last-of-type {
+            -webkit-animation-name: fadeInLeft;
+            animation-name: fadeInLeft;
+        }
+    }

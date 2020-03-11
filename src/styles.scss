@@ -1,1 +1,88 @@
 /* You can add global styles to this file, and also import other style files */
+
+.main-gray-color {
+    color: #F5F5F5 !important;
+}
+
+.main-gray-bg {
+    background-color: #F5F5F5 !important;
+}
+
+.main-green-color {
+    color: #08E6C2 !important;
+}
+
+.main-green-bg {
+    background-color: #08E6C2 !important;
+}
+
+.main-black-color {
+    color: #000000 !important;
+}
+
+.main-black-bg {
+    color: #000000 !important;
+}
+
+.text-bold {
+    font-weight: bold !important;
+}
+
+.text-bolder {
+    font-weight: bolder !important;
+}
+
+.main-black-btn {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    border-radius: 60px !important;
+}
+
+.main-green-btn {
+    background-color: #08E6C2 !important;
+    color: #000000 !important;
+    border-radius: 60px !important;
+}
+
+.border-radius-60 {
+    border-radius: 60px !important;
+}
+
+.border-radius-8 {
+    border-radius: 8px !important;
+}
+
+button:focus {
+    outline: 1px dotted;
+    outline: none !important;
+    outline: 0 !important;
+    // outline: 5px auto -webkit-focus-ring-color;
+}
+
+.mat-list-base {
+    padding-top: 0 !important;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+@media (min-width:768px) {
+     ::-webkit-scrollbar,
+     ::-webkit-scrollbar-thumb {
+        width: 8px;
+        border-radius: 13px;
+        // background-clip: padding-box;
+        height: 7px;
+        border: 1px solid gray;
+    }
+     ::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.5);
+    }
+}

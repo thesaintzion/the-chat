@@ -1,0 +1,44 @@
+:host ::ng-deep {
+    $main-gray: #F5F5F5;
+    $main-green: #08E6C2;
+    $main-black: #000000;
+    .color-primary {
+        color: #2A47EF !important;
+    }
+    input {
+        margin-bottom: 10px;
+        border-radius: 60px;
+    }
+    .mat-list {
+        padding-top: 0;
+        .mat-icon {
+            // background-image: url('../../../assets/img/user.png');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .user-pic-con {
+            width: 50px !important;
+            height: 50px !important;
+            border-radius: 100px;
+            background-color: $main-gray;
+        }
+        .mat-list-item {
+            &:hover {
+                background-color: transparent !important;
+            }
+        }
+    }
+    .mat-list-item.mat-list-item-with-avatar {
+        height: 60px !important;
+        border-bottom: 1px solid #EAEBF0;
+    }
+    @media (max-width: 767px) {
+        .form {
+            padding: 0 10px 0 10px;
+        }
+        .container {
+            padding: 0 !important;
+        }
+    }
+}
