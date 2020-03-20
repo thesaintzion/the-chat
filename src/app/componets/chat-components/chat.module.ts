@@ -5,6 +5,10 @@ import { ChatHomeComponent } from './chat-home/chat-home.component';
 import { ChatLayoutComponent } from '../_layouts/chat-layout/chat-layout.component';
 import { MaterialModule } from 'src/app/shared/materials/material';
 
+import { QuillModule } from 'ngx-quill';
+import { SharedModule } from 'src/app/shared/shared.module';
+
+
 @NgModule({
   declarations: [
     ChatHomeComponent,
@@ -13,7 +17,9 @@ import { MaterialModule } from 'src/app/shared/materials/material';
   imports: [
     CommonModule,
     ChatRoutingModule,
-    MaterialModule,
+     SharedModule,
+    QuillModule.forRoot(),
+
   ]
 })
 export class ChatModule { }

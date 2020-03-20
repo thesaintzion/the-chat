@@ -27,4 +27,16 @@
         padding: 0 !important;
         margin: 0 !important;
     }
+    .backBtn {
+        .mat-icon {
+            width: 34px;
+            height: 34px;
+            font-size: 34px;
+        }
+    }
+    @media (max-width: 991.93px) {
+        .hide-mobile {
+            display: none !important;
+        }
+    }
 }

@@ -1,1 +1,119 @@
-<p>login works!</p>
+<div class="login pb-5 d-flex align-content-center align-items-center w-100 justify-content-center">
+    <div class="container">
+        <div>
+            <div class="floating-img one">
+                <img class="breathing2" src="../../../../assets/img/chat-2-p-1.svg">
+            </div>
+
+            <div class="floating-img two">
+                <img class="breathing1" src="../../../../assets/img/chat-2-p-2.svg">
+            </div>
+
+            <div class="the-with mx-auto">
+                <!-- <div class="col-md-8 border-raius-8  main-con  mx-auto"> -->
+
+                <div class="row no-gutters">
+                    <div class="col-md-6 auth-show-case text-center animated fadeInUp">
+                        <div class="logo d-flex align-content-center align-items-center justify-content-center">
+                            <img src="../../../../assets/logo/logo-sm.png" alt="logo">
+                            <h1 class="">
+                                ChatPlus</h1>
+                        </div>
+                        <div class="user-pic-style mb-4">
+                            <img class="male animated fadeInLeft delay-1s" width="100px" src="../../../../assets/img/user-male.svg">
+                            <img class="female animated fadeInRight delay-1s" width="100px" src="../../../../assets/img/user-female.svg">
+                        </div>
+
+
+                        <div class="earth-img mt-2r">
+                            <img class="rotate" src="../../../../assets/img/The-Earth.svg" alt="">
+                        </div>
+
+                    </div>
+                    <div class="col-md-6 auth-form bg-white animated fadeInDown">
+                        <form [formGroup]="loginForm" (ngSubmit)="login()">
+                            <div *ngIf="loading" class="form-spinal-con d-flex  justify-content-center align-content-center align-items-center">
+                                <div>
+                                    <div class="lds-roller">
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                    </div>
+                                    <p class="text-bolder">Hold on please..</p>
+                                </div>
+                            </div>
+                            <div>
+                                <h1>Sign In</h1>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-md-12">
+                                    <mat-form-field>
+                                        <input matInput formControlName="email" type="email" placeholder="Email Address" required>
+                                        <mat-hint *ngIf="submited && f.email.errors?.required || (f.email?.errors && (f.email?.dirty && f.email.errors?.required))" class="text-danger">Email is required</mat-hint>
+                                        <mat-hint *ngIf="f.email.errors?.maxlength && f.email.dirty" class="text-danger">Maxlength is 30</mat-hint>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <mat-form-field>
+                                        <input matInput formControlName="password" type="password" autocomplete="false" placeholder="Password" required>
+                                        <mat-hint *ngIf="submited && f.password.errors?.required || (f.password?.errors && (f.password?.dirty && f.password.errors?.required))" class="text-danger">Password is required</mat-hint>
+                                        <mat-hint *ngIf="f.password.errors?.minlength && f.password.dirty || f.password.errors?.maxlength && f.password.dirty" class="text-danger">Minlegth is 6, Maxlength is 30</mat-hint>
+                                    </mat-form-field>
+
+                                </div>
+                            </div>
+
+
+                            <div class="mt-2">
+                                <button class="  main-black-btn px-5 w-100" mat-raised-button>LogIn</button>
+                                <div class="d-flex justify-content-between w-100 form-nav text-center">
+                                    <a class="mt-2 " mat-button> <span class="main-green-color">Forgot password?</span></a>
+                                    <a class="mt-2" routerLink="/auth/register" mat-button>Not a member? > <span class="main-green-color">Register</span></a>
+                                </div>
+                            </div>
+
+                        </form>
+                        <div class="text-center mt-4">
+                            <!-- <strong class="mb-4 d-block">- Or -</strong> -->
+
+                            <div class="d-flex justify-content-around">
+                                <button mat-icon-button class="main-gray-bg">
+            <mat-icon class="main-black-color">donut_small</mat-icon>
+        </button>
+                                <button mat-icon-button class="main-gray-bg">
+            <mat-icon class="text-primary">donut_small</mat-icon>
+        </button>
+                                <button mat-icon-button class="main-gray-bg">
+            <mat-icon class="text-danger">donut_small</mat-icon>
+        </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- </div> -->
+                <div class="col-md-8 border-raius-7  mx-auto text-center  mt-4 footer">
+                    <div class="">
+                        <a class="ml-3 d-inline-block " routerLink="/reg">About & Contact</a>
+                        <a class="ml-3 d-inline-block " routerLink="/reg">Developer</a>
+                        <a class="ml-3 d-inline-block " routerLink="/reg">API</a>
+                        <a class="ml-3 d-inline-block " routerLink="/reg">Privacy policy</a>
+                        <a class="ml-3 d-inline-block" routerLink="/reg">Version: <span class="main-green-color">1.0.6</span></a>
+                    </div>
+
+                    <div class="mt-4">
+                        <a class="d-inline-block" routerLink="/reg">&copy; Copyright, <span  class="main-green-color">Chat Plus </span>, 2020.</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

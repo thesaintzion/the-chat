@@ -1,58 +1,220 @@
-<div class="container">
-    <div class=" you row animated animate-custom faster you">
-        <div class=" col-11 chat-box">
-            <div class="chat-box-inner d-flex">
-                <!-- <p class="user-name">{{data.userName}}<span></span></p> -->
-                <button mat-icon-button class="bg-light border mr-1">
+<div class="row">
+    <div class="col-md-10 mx-auto">
+        <div *ngIf="sharedService.MSG_LOADING" class="form-spinal-con pt-5 " style="min-height: 100vh;">
+            <div class="text-center">
+                <!-- <img class="mb-5" width="100px" src="../../../../assets/logo/logo-lg.png" alt=""> -->
+                <!-- <div>
+                    <div class="lds-roller">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+
+                    </div>
+
+                </div> -->
+
+                <div class="earth-img mt-2r">
+                    <img class="rotate" src="../../../../assets/img/The-Earth.svg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!sharedService.MSG_LOADING" class="col-md-10 mx-auto ">
+        <div class=" you row animated animate-custom faster you">
+            <div class=" col-11 chat-box">
+                <div class="chat-box-inner d-flex">
+                    <!-- <p class="user-name">{{data.userName}}<span></span></p> -->
+                    <button (click)="apiService.currentChatUser('123456')" mat-icon-button class="bg-light border mr-1">
                 <mat-icon>person</mat-icon>
             </button>
-                <div class="card">
-                    <div class="card-body">
-                        <p class="mb-0"> Hi, repellendus voluptate. Repellat, atque? </p>
-                        <div>
-                            <small class="float-right sent-icon"><mat-icon class="mb-0">done_all</mat-icon></small>
-                        </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="mb-0"> Hi, repellendus voluptate. Repellat, atque? </p>
+                            <div>
+                                <small class="float-right sent-icon">
+                                Aug 25, 2020, 12:30pm
+                                <mat-icon class="mb-0">done_all</mat-icon></small>
+                            </div>
 
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+        <div class="you row animated animate-custom faster img">
+            <div class=" col-11 chat-box">
+                <div class="chat-box-inner d-flex">
+                    <button mat-icon-button class="bg-light border mr-1">
+                    <mat-icon>person</mat-icon>
+                </button>
+                    <div class="card">
+                        <div class="card-body ">
+                            <div class="d-flex">
+                                <!-- <img style="width: 30%; controls " src="../../../../assets/img/Aggital-2018-in-Review-6.jpg"> -->
+                                <video>
+                                    <source src="../../../../assets/img/Jack (30 Seconds of Terror).mp4" type="video/mp4">
+                                    <source src="../../../../assets/img/Jack (30 Seconds of Terror).ogg" type="video/ogg">
+                                    Your browser does not support HTML5 video.
+                            </video>
+                            </div>
 
+                            <div>
+                                <small class=" sent-icon">
+                                Aug 25, 2020, 12:30pm
+                                <mat-icon class="mb-0">done_all</mat-icon></small>
+                            </div>
 
-    <div class=" you row animated animate-custom faster me">
-        <div class=" col-11 chat-box">
-            <div class="chat-box-inner d-flex">
-                <!-- <p class="user-name">{{data.userName}}<span></span></p> -->
-                <div class="card">
-                    <div class="card-body">
-                        <p class="mb-0"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae voluptates quidem vero culpa ab aperiam quas fugit excepturi asperiores. Nesciunt molestias iste nostrum, autem perspiciatis reiciendis repellendus voluptate. Repellat,
-                            atque? </p>
-                        <div>
-                            <small class="float-right sent-icon"><mat-icon class="mb-0">done_all</mat-icon></small>
                         </div>
+                    </div>
 
+                </div>
+            </div>
+        </div>
+
+        <div class=" you row animated animate-custom faster you">
+            <div class=" col-11 chat-box">
+                <div class="chat-box-inner d-flex">
+                    <!-- <p class="user-name">{{data.userName}}<span></span></p> -->
+                    <button mat-icon-button class="bg-light border mr-1">
+                <mat-icon>person</mat-icon>
+            </button>
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="mb-0"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae iste nostrum, autem perspiciatis reiciendis repellendus voluptate. Repellat, atque? </p>
+                            <div>
+                                <small class="float-right sent-icon">
+                                Aug 25, 2020, 12:30pm
+                                <mat-icon class="mb-0">done_all</mat-icon></small>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class=" you row animated animate-custom faster me image">
-        <div class=" col-11 chat-box">
-            <div class="chat-box-inner">
-                <!-- <p class="user-name">{{data.userName}}<span></span></p> -->
-                <div class="card">
-                    <div class="card-body">
-                        <img style="width: 30%;" src="../../../../assets/img/Aggital-2018-in-Review-6.jpg">
-                        <div>
-                            <small class="float-right sent-icon"><mat-icon class="mb-0">done_all</mat-icon></small>
+
+
+        <div class="you row animated animate-custom faster img">
+            <div class=" col-11 chat-box">
+                <div class="chat-box-inner d-flex">
+                    <button mat-icon-button class="bg-light border mr-1">
+                    <mat-icon>person</mat-icon>
+                </button>
+                    <div class="card">
+                        <div class="card-body ">
+                            <div class="d-flex">
+                                <img src="../../../../assets/img/Aggital-2018-in-Review-6.jpg">
+                            </div>
+
+                            <div>
+                                <small class=" sent-icon">
+                                Aug 25, 2020, 12:30pm
+                                <mat-icon class="mb-0">done_all</mat-icon></small>
+                            </div>
+
                         </div>
-
                     </div>
-                </div>
 
+                </div>
             </div>
         </div>
+
+        <div class="me row animated animate-custom faster me">
+            <div class=" col-11 chat-box">
+                <div class="chat-box-inner d-flex">
+                    <!-- <p class="user-name">{{data.userName}}<span></span></p> -->
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="mb-0"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae voluptates quidem vero culpa ab aperiam quas fugit excepturi asperiores. Nesciunt molestias iste nostrum, autem perspiciatis reiciendis repellendus voluptate.
+                                Repellat, atque? </p>
+                            <div>
+                                <small class="float-right sent-icon">
+                                Aug 25, 2020, 12:30pm
+                                <mat-icon class="mb-0">done_all</mat-icon></small>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="me row animated animate-custom faster img">
+            <div class=" col-11 chat-box">
+                <div class="chat-box-inner">
+                    <!-- <p class="user-name">{{data.userName}}<span></span></p> -->
+                    <div class="card">
+                        <div class="card-body ">
+                            <div class="d-flex">
+
+                                <video controls>
+                                <source src="../../../../assets/img/Jack (30 Seconds of Terror).mp4" type="video/mp4">
+                                <source src="../../../../assets/img/Jack (30 Seconds of Terror).ogg" type="video/ogg">
+                                Your browser does not support HTML5 video.
+                        </video>
+                                <!-- <img style="width: 30%; " src="../../../../assets/img/Aggital-2018-in-Review-6.jpg"> -->
+                            </div>
+
+                            <div>
+                                <small class="float-right sent-icon">
+                                Aug 25, 2020, 12:30pm
+                                <mat-icon class="mb-0">done_all</mat-icon></small>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="me row animated animate-custom faster me">
+            <div class=" col-11 chat-box">
+                <div class="chat-box-inner d-flex">
+                    <!-- <p class="user-name">{{data.userName}}<span></span></p> -->
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="mb-0"> Lorem ipsum dolor sit amet consectetur adipisicing elit atque? </p>
+                            <div>
+                                <small class="float-right sent-icon">
+                                Aug 25, 2020, 12:30pm
+                                <mat-icon class="mb-0">done_all</mat-icon></small>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="me row animated animate-custom faster img">
+            <div class=" col-11 chat-box">
+                <div class="chat-box-inner">
+                    <!-- <p class="user-name">{{data.userName}}<span></span></p> -->
+                    <div class="card">
+                        <div class="card-body ">
+                            <div class="d-flex">
+                                <img src="../../../../assets/img/Aggital-2018-in-Review-6.jpg">
+                            </div>
+
+                            <div>
+                                <small class="float-right sent-icon">
+                                Aug 25, 2020, 12:30pm
+                                <mat-icon class="mb-0">done_all</mat-icon></small>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- (onContentChanged)="aboutInfoDescription($event)" -->
+
+
+
     </div>
 
 </div>

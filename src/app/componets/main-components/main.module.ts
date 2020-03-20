@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MainRoutingModule } from './main-routing.module';
 import { MainLayoutComponent } from '../_layouts/main-layout/main-layout.component';
-import { MaterialModule } from 'src/app/shared/materials/material';
 import { UsersComponent } from './users/users.component';
 import { ProfileComponent } from './profile/profile.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -16,7 +16,7 @@ import { ProfileComponent } from './profile/profile.component';
   imports: [
     CommonModule,
     MainRoutingModule,
-    MaterialModule,
+    SharedModule,
   ]
 })
 export class MainModule { }

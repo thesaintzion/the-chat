@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router, NavigationEnd,ActivatedRoute, } from '@angular/router';
+import { filter } from 'rxjs/operators'
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-users',
@@ -23,6 +25,11 @@ console.log(params);
     //   //   console.log('Take Em Back now');
     //   // }
     // });
+
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(
+      () => window.scrollTo(0, 0));  
   }
 
 }

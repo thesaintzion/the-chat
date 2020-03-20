@@ -1,0 +1,200 @@
+:host ::ng-deep {
+    * {
+        font-weight: normal;
+    }
+    $main-gray: #F5F5F5;
+    $main-green: #08E6C2;
+    $main-black: #000000;
+    h1 {
+        font-weight: bold;
+        margin: 0;
+    }
+    h2 {
+        text-align: center;
+    }
+    .login {
+        background-color: #eee;
+        min-height: 100vh;
+    }
+    .the-with {
+        .row:first-of-type {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        max-width: 750px;
+    }
+    .main-con {
+        border-radius: 10px;
+        overflow: hidden;
+        // box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    }
+    .auth-form {
+        padding: 20px 30px 30px 30px;
+    }
+    .auth-show-case {
+        padding: 30px;
+        background: -webkit-linear-gradient(to right, rgb(60, 245, 214), #08E6C2);
+        background: linear-gradient(to right, rgb(60, 245, 214), #08E6C2);
+        .logo {
+            width: 100%;
+            margin-bottom: 30px;
+            h1 {
+                font-size: 25px;
+                display: inline-block;
+                margin-bottom: 0;
+                margin-left: 10px;
+            }
+        }
+        p {
+            font-size: 20px;
+            font-weight: bold;
+        }
+    }
+    .mat-form-field {
+        width: 100% !important;
+        // padding: 0 10px 0 10px;
+        * {
+            width: 100%;
+        }
+    }
+    .user-pic-style {
+        img {
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+            border-radius: 50%;
+            border: 3px solid #03A389;
+            width: 100px;
+        }
+        .female {
+            // position: absolute;
+            top: 0;
+            margin-left: -20px !important;
+            // width: 100%;
+            // right: 0;
+            // height: 100%;
+            // background: rgba(0, 0, 0, 0.25);
+        }
+    }
+    .earth-img {
+        img {
+            width: 150px;
+        }
+    }
+    .floating-img {
+        position: fixed;
+        img {
+            width: 100px;
+        }
+        display: none;
+    }
+    .floating-img.one {
+        left: 20px;
+        top: 60%;
+    }
+    .floating-img.two {
+        top: 20px;
+        right: 20px;
+    }
+    // 
+    .form-spinal-con {
+        background-color: rgba(255, 255, 255, 0.9);
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 2;
+    }
+    .footer {
+        a {
+            color: rgba(0, 0, 0, 0.25);
+            font-weight: bold;
+            font-size: 14px;
+        }
+        span {
+            font-size: inherit;
+        }
+    }
+    @-webkit-keyframes jump {
+        0% {
+            -webkit-transform: translateY(5px);
+            transform: translateY(5px);
+        }
+        50% {
+            -webkit-transform: translateY(-10px);
+            transform: translateY(-10px);
+        }
+        100% {
+            -webkit-transform: translateY(5px);
+            transform: translateY(5px);
+        }
+    }
+    @keyframes jump {
+        0% {
+            -webkit-transform: translateY(5px);
+            transform: translateY(5px);
+        }
+        50% {
+            -webkit-transform: translateY(-10px);
+            transform: translateY(-10px);
+        }
+        100% {
+            -webkit-transform: translateY(5px);
+            transform: translateY(5px);
+        }
+    }
+    .breathing1 {
+        -webkit-animation: jump 3s ease-out infinite normal;
+        animation: jump 3s ease-out infinite normal;
+    }
+    .breathing2 {
+        -webkit-animation: jump 5s ease-out infinite normal;
+        animation: jump 5s ease-out infinite normal;
+    }
+    @media (max-width: 767px) {
+        .user-pic-style {
+            display: none;
+        }
+        .form-nav {
+            display: block !important;
+            a {
+                display: block !important;
+            }
+        }
+        .auth-form {
+            h1 {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+            padding: 30px;
+        }
+        .auth-show-case {
+            padding: 20px 30px 30px 30px;
+            .logo {
+                margin-bottom: 40px;
+                // background: rgba(0, 0, 0, 0.25);
+                h1 {
+                    font-size: 25px;
+                    display: inline-block;
+                    margin-bottom: 0;
+                    margin-left: 10px;
+                }
+            }
+            p {
+                color: #ffffff;
+                margin-top: 10px !important;
+                font-weight: 600;
+                font-size: 25px;
+                line-height: 25px;
+            }
+        }
+        .the-with {
+            .row:first-of-type {
+                border-radius: 0;
+            }
+            max-width: 100%;
+        }
+        .container {
+            padding: 0 !important;
+        }
+    }
+}

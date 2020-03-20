@@ -4,6 +4,8 @@ import { ChatHomeComponent } from './chat-home/chat-home.component';
 import { ChatLayoutComponent } from '../_layouts/chat-layout/chat-layout.component';
 
 
+
+
 const routes: Routes = [
   {path: '', component: ChatLayoutComponent, children: [
     {path: '', component: ChatHomeComponent}
@@ -11,7 +13,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(routes),
+    
+  ],
   exports: [RouterModule]
 })
 export class ChatRoutingModule { }

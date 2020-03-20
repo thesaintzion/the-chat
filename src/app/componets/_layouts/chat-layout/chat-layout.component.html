@@ -1,53 +1,82 @@
-<mat-sidenav-container class="sidenav-container">
+<mat-sidenav-container class="sidenav-container bg-white">
+    <!-- <mat-sidenav [ngClass]="{'bg': bgLoading}" #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false"> -->
+
     <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
-        <mat-toolbar class="border-bottom">
+        <mat-toolbar [ngClass]="{'fadeOutUp': searching, 'fadeIntUp': !searching}" *ngIf="!searching" class="border-bottom animated  ">
             <div class="d-flex justify-content-between w-100">
                 <div class="user d-flex align-items-center align-content-center ">
-                    <div class="user-pic-con">
+                    <button [matMenuTriggerFor]="userMoreInfo" mat-icon-button class="main-gray-bg main-blck-color">
+                        <mat-icon>person</mat-icon>
+                    </button>
 
-                    </div>
                     <strong class="ml-3">TheChats</strong>
                 </div>
                 <div class="icon-links d-flex align-items-center align-content-center">
-                    <button mat-icon-button class="main-gray-bg justify-content-center d-flex align-items-center align-content-center">
-                        <mat-icon>person</mat-icon>
-                    </button>
-                    <button mat-icon-button class="ml-2 main-gray-bg">
+
+
+                    <button routerLink="/users" mat-icon-button class=" main-gray-bg main-blck-color">
                         <mat-icon>group</mat-icon>
                     </button>
+
+                    <button [matMenuTriggerFor]="userMoreInfo" mat-icon-button class="main-gray-bg main-blck-color ml-3">
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+
+
+
                 </div>
             </div>
+            <mat-menu #userMoreInfo="matMenu">
+                <mat-list class="cursor-pointer">
+                    <mat-list-item>
+                        <h4 mat-line class="text-bolder">Saint Zion</h4>
+                        <p mat-line class="main-green-color">saint@gmail.com</p>
+                    </mat-list-item>
+                </mat-list>
 
+                <button routerLink="/profile/123456" mat-menu-item>
+                  <span>Profile</span>
+                </button>
+
+                <button routerLink="/profile/123456" mat-menu-item>
+                    <span>Settings</span>
+                  </button>
+
+                <button (click)="logOutDialog()" mat-menu-item>
+                    <span class="text-danger">Logout</span>
+                  </button>
+            </mat-menu>
         </mat-toolbar>
+
+        <!-- <mat-nav-list class="animated fadeInUp " *ngIf="!bgLoading"> -->
+
         <mat-nav-list>
+            <div style="height: 63px;" class="bg-light px-3 search-form d-flex align-content-center align-items-center">
+                <mat-icon *ngIf="searching" (click)="searching = false" style="cursor: pointer; ">arrow_back</mat-icon>
+                <div class="form w-100 pl-3">
+                    <input (click)="search()" placeholder="Search" class="form-control">
+                </div>
+            </div>
             <mat-list>
-                <mat-list-item routerLink="/chat">
+                <mat-list-item *ngFor="let user of users" (click)="closeMen(drawer)" routerLink="/chat">
                     <mat-icon mat-list-icon class="user-pic-con"></mat-icon>
-                    <span mat-line>Saint Zion Success</span>
-                    <span mat-line>Online</span>
-                </mat-list-item>
+                    <span [ngClass]="{'text-bolder':  user.unreadMsg }" mat-line>{{user.name}}</span>
+                    <div mat-line class="d-flex">
+                        <span class="pr-2" [ngClass]="(user.status == 'Online')?'main-green-color' : 'text-muted'">{{user.status}}</span>
+                        <span [ngClass]="{'text-bolder':  user.unreadMsg }">{{user.newMsg}}</span>
+                    </div>
 
-                <mat-list-item routerLink="/chat">
-                    <mat-icon mat-list-icon class="user-pic-con"></mat-icon>
-                    <span mat-line>Saint Zion Success</span>
-                    <span mat-line>Online</span>
                 </mat-list-item>
-
-                <mat-list-item routerLink="/chat">
-                    <mat-icon mat-list-icon class="user-pic-con"></mat-icon>
-                    <span mat-line>Saint Zion Success</span>
-                    <span mat-line>Online</span>
-                </mat-list-item>
-
             </mat-list>
         </mat-nav-list>
     </mat-sidenav>
 
     <mat-sidenav-content>
         <mat-toolbar class="bg-white border-bottom">
-            <!-- <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button> -->
+            <button tabindex="-1" type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
+                <mat-icon class="text-bolder">arrow_back_ios</mat-icon>
+      </button>
+
 
             <div class="d-flex justify-content-between w-100">
                 <div class="user  d-flex align-items-center align-content-center ">
@@ -56,27 +85,31 @@
                             <div mat-list-icon (click)="drawer.toggle()" class="user-pic-con">
 
                             </div>
-                            <span class="user-name text-bolder" mat-line>Saint Zion Success</span>
-                            <span class="user-desc" mat-line>Online</span>
+                            <span class="user-name text-bolder" mat-line>Saint Zion </span>
+                            <span class="user-desc main-green-color" mat-line>Online {{apiService.CURRENT_CHAT_USER?.id}}</span>
                         </mat-list-item>
                     </mat-list>
                 </div>
                 <div class="icon-links d-flex align-items-center align-content-center">
-                    <button #vid mat-icon-button class="ml-3">
+                    <button #vid mat-icon-button class="ml-3 d-none d-lg-block">
                         <mat-icon>videocam</mat-icon>
                     </button>
-                    <button mat-icon-button class=" ml-3">
+                    <button mat-icon-button class=" ml-3 d-none d-lg-block">
                         <mat-icon>call</mat-icon>
                     </button>
-                    <button [matMenuTriggerFor]="userInfo" mat-icon-button class="ml-3">
+                    <button [matMenuTriggerFor]="userInfo" mat-icon-button class="ml-3 d-none d-lg-block">
                         <mat-icon>info</mat-icon>
                     </button>
+
+                    <button class=" d-lg-none" mat-icon-button [matMenuTriggerFor]="mobileMenu">
+                        <mat-icon>more_vert</mat-icon>
+                      </button>
                 </div>
             </div>
         </mat-toolbar>
-        <!-- Menu -->
-        <mat-menu #userInfo="matMenu" class="p-0">
+        <!-- /Menu -->
 
+        <mat-menu #userInfo="matMenu" class="p-0">
             <img style="width: 100%;" mat-card-image src="../../../../assets/img/Aggital-2018-in-Review-6.jpg" alt="User profile">
             <div class="py-4 px-3">
                 <p>From: *********</p>
@@ -88,8 +121,66 @@
             </div>
 
         </mat-menu>
+        <!-- Menu 2 -->
+
+        <mat-menu #mobileMenu="matMenu">
+            <button mat-menu-item>
+              <mat-icon>dialpad</mat-icon>
+              <span>Redial</span>
+            </button>
+            <button mat-menu-item disabled>
+              <mat-icon>voicemail</mat-icon>
+              <span>Check voice mail</span>
+            </button>
+            <button mat-menu-item>
+              <mat-icon>notifications_off</mat-icon>
+              <span>Disable alerts</span>
+            </button>
+        </mat-menu>
+
         <!-- Add Content Here -->
-        <router-outlet></router-outlet>
+        <div class=" router-outlet  pb-5 bg-light" style="overflow: hidden;">
+            <router-outlet></router-outlet>
+        </div>
+
+        <div *ngIf="!sharedService.MSG_LOADING" class="footer shadow">
+            <mat-toolbar class="border-top" style="overflow: hidden;">
+                <div class="d-flex  w-100">
+                    <div class="icon-links d-flex align-items-center align-content-center mr-3">
+                        <button mat-icon-button class="ml-3">
+                            <mat-icon class="main-green-color">perm_media</mat-icon>
+                </button>
+
+
+                        <button [matMenuTriggerFor]="userInfo" mat-icon-button class="ml-3">
+                            <mat-icon class="main-green-color">photo_camera</mat-icon>
+                </button>
+                    </div>
+
+
+
+
+                    <div class=" d-flex align-items-center align-content-center w-100">
+                        <quill-editor class="w-100" [modules]="quillConfig" placeholder="Type description"></quill-editor>
+                    </div>
+
+                    <div class="icon-links d-flex align-items-center align-content-center">
+                        <button mat-icon-button class="ml-3">
+                            <mat-icon class="main-green-color">tag_faces</mat-icon>
+                        </button>
+
+                        <button mat-icon-button class="ml-3">
+                    <mat-icon class="main-green-color">keyboard_voice</mat-icon>
+                </button>
+                        <button class=" d-lg-none" mat-icon-button [matMenuTriggerFor]="mobileMenu">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                    </div>
+                </div>
+            </mat-toolbar>
+        </div>
+
+
     </mat-sidenav-content>
 </mat-sidenav-container>
 

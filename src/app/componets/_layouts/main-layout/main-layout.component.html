@@ -6,35 +6,42 @@
 
         <div class="d-flex justify-content-between w-100">
             <div class="user  d-flex align-items-center align-content-center ">
-                <button mat-icon-button>
-                    <mat-icon class="text-bolder">keyboard_arrow_left</mat-icon>
-            </button>
-                <img src="../../../../assets/logo/logo-sm.png" />
+                <div class="d-flex align-items-center align-content-center">
+                    <button (click)="location.back()" class="backBtn justify-content-center  d-flex align-items-center align-content-center" mat-icon-button>
+                        <mat-icon class="text-bolder">arrow_back_ios</mat-icon>
+                </button>
+                </div>
+
+                <img class="ml-4" src="../../../../assets/logo/logo-sm.png" />
                 <strong class="ml-3">TheChats</strong>
             </div>
 
-            <div class="user  d-flex align-items-center align-content-center ">
+            <div class="user  d-flex align-items-center align-content-center hide-mobile">
                 <div class="form">
                     <input placeholder="Search" class="form-control">
                 </div>
             </div>
 
-            <div class="user  d-flex align-items-center align-content-center ">
+            <div class="user  d-flex align-items-center align-content-center hide-mobile">
                 <mat-list>
-                    <mat-list-item routerLink="/chat">
-                        <div mat-list-icon (click)="drawer.toggle()" class="user-pic-con"></div>
+                    <mat-list-item routerLink="/profile/4937651223">
+                        <div mat-list-icon class="user-pic-con"></div>
                         <strong class="user-name" mat-line>Saint Zion Success</strong>
 
                     </mat-list-item>
                 </mat-list>
             </div>
-            <div class="icon-links d-flex align-items-center align-content-center">
-                <div class="icon-con ml-3">
-                </div>
-                <div class="icon-con ml-3">
-                </div>
-                <div class="icon-con ml-3">
-                </div>
+            <div class="icon-links d-flex align-items-center align-content-center ">
+
+                <button routerLink="/chat" mat-icon-button class="main-gray-bg justify-content-center d-flex align-items-center align-content-center">
+                    <mat-icon> chat</mat-icon>
+                </button>
+                <button routerLink="/profile/123456" mat-icon-button class="ml-4  main-gray-bg justify-content-center d-flex align-items-center align-content-center">
+                    <mat-icon>person</mat-icon>
+                </button>
+                <button routerLink="/users" mat-icon-button class="ml-4 main-gray-bg justify-content-center d-flex align-items-center align-content-center">
+                    <mat-icon>group</mat-icon>
+                </button>
             </div>
         </div>
     </mat-toolbar>

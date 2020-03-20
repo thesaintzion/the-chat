@@ -1,12 +1,18 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './shared/materials/material';
 import { PageNotFoundComponent } from './componets/page-not-found/page-not-found.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import { SharedDialogComponent } from './componets/_dialog/shared-dialog/shared-dialog.component';
+import { SharedModule } from './shared/shared.module';
+import { ApiService } from './services/api.service';
+import { SharedService } from './services/shared.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpInterceptorService } from './services/http-interceptor.service';
+
 
 
 
@@ -16,6 +22,7 @@ import { LayoutModule } from '@angular/cdk/layout';
   declarations: [
     AppComponent,
     PageNotFoundComponent,
+    SharedDialogComponent,
     
   ],
   imports: [
@@ -23,9 +30,14 @@ import { LayoutModule } from '@angular/cdk/layout';
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
-    MaterialModule,
+    SharedModule,
   ],
-  providers: [],
+ providers: [ApiService, SharedService, {
+   provide: HTTP_INTERCEPTORS,
+   useClass: HttpInterceptorService,
+   multi: true
+ }],
+ entryComponents:[SharedDialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

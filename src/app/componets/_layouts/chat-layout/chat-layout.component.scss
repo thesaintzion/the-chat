@@ -8,7 +8,7 @@
     .sidenav {
         width: 369px;
         .mat-toolbar {
-            background: inherit;
+            background: #ffffff;
             .icon-con {
                 width: 36px !important;
                 height: 36px !important;
@@ -30,6 +30,12 @@
                 background-color: $main-gray;
             }
         }
+    }
+    .sidenav.bg {
+        background-image: url('../../../../assets//img/Side_Bar.svg');
+        background-size: cover;
+        background-position: top center;
+        background-repeat: no-repeat;
     }
     .mat-sidenav-content {
         .mat-toolbar {
@@ -54,9 +60,60 @@
                 }
             }
         }
+        .footer {
+            position: sticky;
+            bottom: 0;
+            z-index: 1;
+            width: 100%;
+            overflow: hidden;
+            .mat-toolbar {
+                background-color: #ffffff !important;
+            }
+            .mat-icon {
+                height: 30px;
+                width: 30px;
+                font-size: 30px;
+            }
+        }
     }
     .user-pic-con.mat-list-icon {
         padding: 0 !important;
         margin: 0 !important;
+    }
+    // 
+    .ql-container.ql-snow {
+        background-color: #f5f5f5;
+        border: 1px solid #eee;
+        border-radius: 60px;
+        height: 45px;
+        &:hover {
+            border-color: $main-green !important;
+        }
+    }
+    .search-form {
+        .form-control {
+            border-radius: 60px;
+        }
+    }
+    .mat-list-base .mat-list-item .mat-line {
+        text-overflow: ellipsis !important;
+        span:last-of-type {
+            overflow: hidden;
+            text-overflow: ellipsis !important;
+        }
+    }
+    @media (max-width:767px) {
+        .sidenav {
+            width: 100% !important;
+        }
+        .router-outlet {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    }
+    @media (max-width: 991.93px) {
+        .hide-mobile {
+            display: none !important;
+        }
     }
 }
