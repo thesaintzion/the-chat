@@ -21,6 +21,13 @@
                 border-radius: 100px;
                 background-color: $main-gray;
             }
+            .user {
+                .user-pic {
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                }
+            }
         }
         .mat-nav-list {
             .user-pic-con {

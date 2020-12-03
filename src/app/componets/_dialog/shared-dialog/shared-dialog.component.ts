@@ -12,6 +12,10 @@ export class SharedDialogComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<SharedDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data,) { }
 
+    onFormSubmit(){
+      
+    }
+
   ngOnInit() {
     
   }

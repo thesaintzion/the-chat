@@ -1,79 +1,59 @@
-<div class="   animated fadeInUp pt-3  " style=" min-height: 100vh;">
+<div class=" animated fadeInUp pt-3  pb-5" style=" min-height: 100vh;">
     <div class="container">
         <div class="row no-gutters">
-            <div class="col-md-7 feed mx-auto">
+            <!-- <div class="col-md-7 feed mx-auto">
                 <div class="form">
                     <input class="form-control" placeholder="Seacrh friends ">
+                </div>
+            </div> -->
+            <div class="col-md-7 feed mx-auto border bg-white border-radius-8">
+                <mat-nav-list>
+                    <mat-list>
+                        <mat-list-item *ngFor="let user of users" matTooltip="User Name" class="position-relative">
+                            <mat-icon routerLink="/profile/{{user._id}}" style="background-image: url('../../../../assets/img/user-male.svg')" mat-list-icon class="user-pic-con"></mat-icon>
+                            <span routerLink="/profile/{{user._id}}" mat-line class="main-back-color text-bolder">{{user.firstname}} {{user.lastname}}</span>
+                            <span class="status" mat-line>{{user.username}}</span>
+                            <div>
+                                <!-- <button mat-button class="main-green-color">Following</button> -->
+                                <button (click)="follow(user._id)" mat-raised-button class="main-black-btn">
+                                    Follow
+                                </button>
+                            </div>
+                        </mat-list-item>
+                    </mat-list>
+                </mat-nav-list>
+            </div>
+            <div class="col-md-7 feed mx-auto border-radius-8 mt-5 mb-1">
+                <div class="text-center">
+                    <div class="lds-roller">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- <div class="col-md-7 feed mx-auto border-radius-8 mt-5 mb-1">
+                <div class="d-flex justify-content-between">
+                    <p class=" mb-0 main-black-color">Meet People</p>
+                    <div>
+                        <button mat-icon-button>  
+                            <mat-icon class="text-muted">more_horiz</mat-icon>
+                        </button>
+
+                    </div>
                 </div>
             </div>
             <div class="col-md-7 feed mx-auto border bg-white border-radius-8">
                 <mat-nav-list>
                     <mat-list>
-                        <mat-list-item routerLink="/profile/12345566" matTooltip="User Name" class="position-relative">
-                            <mat-icon mat-list-icon class="user-pic-con"></mat-icon>
-                            <span mat-line>Saint Zion</span>
-                            <span class="status" mat-line>Software dev.</span>
-                            <div>
-                                <button mat-button class="main-green-color">Following</button>
-                            </div>
-                        </mat-list-item>
-
-                        <mat-list-item>
-                            <mat-icon mat-list-icon class="user-pic-con"></mat-icon>
-                            <span mat-line>Mahammed B.</span>
-                            <span class="status" mat-line>NDA</span>
-                            <div>
-                                <button mat-button class="main-green-color">Following</button>
-                            </div>
-                        </mat-list-item>
-
-                        <mat-list-item>
-                            <mat-icon mat-list-icon class="user-pic-con"></mat-icon>
-                            <span mat-line>Goodluck Jona</span>
-                            <span class="status" mat-line>Politics</span>
-                            <div>
-                                <button mat-button class="main-green-color">Following</button>
-                            </div>
-                        </mat-list-item>
-                        <mat-list-item class="position-relative">
-                            <mat-icon mat-list-icon class="user-pic-con"></mat-icon>
-                            <span mat-line>Saint Zion</span>
-                            <span class="status" mat-line>Software dev.</span>
-                            <div>
-                                <button mat-button class="main-green-color">Following</button>
-                            </div>
-                        </mat-list-item>
-
-                        <mat-list-item>
-                            <mat-icon mat-list-icon class="user-pic-con"></mat-icon>
-                            <span mat-line>Mahammed B.</span>
-                            <span class="status" mat-line>NDA</span>
-                            <div>
-                                <button mat-button class="main-green-color">Following</button>
-                            </div>
-                        </mat-list-item>
-
-                        <mat-list-item>
-                            <mat-icon mat-list-icon class="user-pic-con"></mat-icon>
-                            <span mat-line>Goodluck Jona</span>
-                            <span class="status" mat-line>Politics</span>
-                            <div>
-                                <button mat-button class="main-green-color">Following</button>
-                            </div>
-                        </mat-list-item>
-                    </mat-list>
-
-                </mat-nav-list>
-            </div>
-
-
-
-            <div class="col-md-7 feed mx-auto border-radius-8">
-                <p class="mt-4 mb-2 main-black-color">Meet People</p>
-            </div>
-            <div class="col-md-7 feed mx-auto border bg-white">
-                <mat-nav-list>
-                    <mat-list>
                         <mat-list-item class="position-relative">
                             <mat-icon mat-list-icon class="user-pic-con"></mat-icon>
                             <span mat-line>Saint Zion</span>
@@ -103,7 +83,7 @@
                     </mat-list>
 
                 </mat-nav-list>
-            </div>
+            </div> -->
 
         </div>
     </div>

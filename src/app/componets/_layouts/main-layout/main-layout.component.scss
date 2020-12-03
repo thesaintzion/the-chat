@@ -6,6 +6,10 @@
         background-color: $main-gray;
         min-height: 100vh;
     }
+    input {
+        border-radius: 60px;
+        // background-color: #eee;
+    }
     .mat-toolbar {
         position: sticky;
         top: 0;
@@ -15,6 +19,10 @@
             height: 40px !important;
             border-radius: 100px;
             background-color: $main-gray;
+            padding: 0;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
         .icon-con {
             width: 36px !important;

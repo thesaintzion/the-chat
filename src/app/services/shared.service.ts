@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { SharedDialogComponent } from '../componets/_dialog/shared-dialog/shared-dialog.component';
 
 
 export interface User  {
@@ -47,6 +48,27 @@ sharedSlug =  this.router.url.split('/')[1];
     }
   
   }
+
+  // LOGOUT USER
+  logOutDialog(): void {
+    let message = 'Are you sure you want to logout?'
+    const  dialogRef = this.dialog.open(SharedDialogComponent, {  
+       width: '300px',
+       data:{message: message},
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+     if(result) {
+      console.log(result);
+      // this.sharedService.openSnackBar('Logging Out.. Bye!!', '', 3000, '');
+      localStorage.removeItem('XXX_CHAT_PLUS');
+  this.router.navigate(['/auth/login']);
+      // setTimeout( ()=>{
+  
+      // }, 3000);
+    }
+   });
+   }
 
  
 

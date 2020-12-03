@@ -13,16 +13,38 @@
                         </button>
                     </div>
                 </div>
-                <div class="bg-white border border-radius-8 px-3 ">
-                    <mat-list>
+                <div class="bg-white border border-radius-8  ">
+                    <mat-list class="px-3 ">
                         <mat-list-item class="position-relative ">
-                            <span mat-line class="text-bolder ">Saint Zion</span>
-                            <span class="status " mat-line>Software dev.</span>
+                            <!-- this.apiService.USER.id this.apiService.USER.firstname this.apiService.USER.lastname this.apiService.USER.email this.apiService.USER.status this.apiService.USER.activated 
+                            this.apiService.USER.createdAt this.apiService.USER.updatedAt -->
+                            <span mat-line class="text-bolder ">{{apiService.USER?.firstname}} {{apiService.USER?.lastname}}</span>
+                            <span class="status " mat-line>{{apiService.USER?.username}}</span>
                             <div>
                                 <button mat-raised-button class="main-black-btn px-5 ">Follow</button>
                             </div>
                         </mat-list-item>
                     </mat-list>
+                    <div class="d-flex justify-content-between border-top py-2">
+                        <div>
+                            <a mat-button routerLink="/chat" class="main-black-color shadow-0 px- ">
+                                <mat-icon> chat</mat-icon>
+                                Message
+                            </a>
+                        </div>
+                        <div>
+                            <a mat-button routerLink="/chat" class="main-black-color shadow-0 px- ">
+                                <mat-icon>videocam</mat-icon>
+                                Video
+                            </a>
+                        </div>
+                        <div>
+                            <a mat-button routeeLink="/chat" class="main-black-color  shadow-0 px- ">
+                                <mat-icon>call</mat-icon>
+                                Call
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="row no-gutters m-0 mt-4 ">
@@ -43,19 +65,16 @@
                             <mat-nav-list class="p-0 ">
                                 <mat-list>
                                     <mat-list-item class="position-relative ">
-
-                                        <mat-icon mat-list-icon class=" main-gray-bg main-black-color ">location_on</mat-icon>
-
-                                        <span mat-line><strong>From: </strong>Califonia, USA</span>
-                                    </mat-list-item>
-                                    <mat-list-item class="position-relative ">
                                         <mat-icon mat-list-icon class=" main-gray-bg main-black-color ">people</mat-icon>
                                         <span mat-line><strong>Followers: </strong> * * * *</span>
                                     </mat-list-item>
                                     <mat-list-item class="position-relative ">
-
                                         <mat-icon mat-list-icon class=" main-gray-bg main-black-color ">people_outline</mat-icon>
                                         <span mat-line><strong>Following: </strong> * * * *</span>
+                                    </mat-list-item>
+                                    <mat-list-item class="position-relative ">
+                                        <mat-icon mat-list-icon class=" main-gray-bg main-black-color ">access_time</mat-icon>
+                                        <span mat-line><strong>Joined: </strong> {{apiService.USER.createdAt}}</span>
                                     </mat-list-item>
 
                                 </mat-list>
@@ -69,19 +88,21 @@
                             <mat-nav-list>
                                 <mat-list>
                                     <mat-list-item class="position-relative ">
+                                        <mat-icon mat-list-icon class=" main-gray-bg main-black-color ">location_on</mat-icon>
+                                        <span mat-line><strong>From: </strong>* * * *</span>
+                                    </mat-list-item>
+
+                                    <mat-list-item class="position-relative ">
                                         <mat-icon mat-list-icon class=" main-gray-bg main-black-color ">person</mat-icon>
                                         <span mat-line><strong>Age: </strong> * * *</span>
                                     </mat-list-item>
 
                                     <mat-list-item class="position-relative ">
-                                        <mat-icon mat-list-icon class=" main-gray-bg main-black-color ">person</mat-icon>
+                                        <mat-icon mat-list-icon class=" main-gray-bg main-black-color">work</mat-icon>
                                         <span mat-line><strong>Occupation: </strong> * * *</span>
                                     </mat-list-item>
 
-                                    <mat-list-item class="position-relative ">
-                                        <mat-icon mat-list-icon class=" main-gray-bg main-black-color ">person</mat-icon>
-                                        <span mat-line><strong>Religion: </strong> * * *</span>
-                                    </mat-list-item>
+
 
 
 

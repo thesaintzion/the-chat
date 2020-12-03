@@ -5,13 +5,15 @@ import { MainLayoutComponent } from '../_layouts/main-layout/main-layout.compone
 import { UsersComponent } from './users/users.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { EmailComponent } from './email/email.component';
 
 
 @NgModule({
   declarations: [
     MainLayoutComponent,
     UsersComponent,
-    ProfileComponent
+    ProfileComponent,
+    EmailComponent
   ],
   imports: [
     CommonModule,

@@ -1,61 +1,78 @@
-<mat-sidenav-container class="sidenav-container bg-white">
+<mat-sidenav-container class="sidenav-container">
     <!-- <mat-sidenav [ngClass]="{'bg': bgLoading}" #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false"> -->
 
     <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
         <mat-toolbar [ngClass]="{'fadeOutUp': searching, 'fadeIntUp': !searching}" *ngIf="!searching" class="border-bottom animated  ">
+
             <div class="d-flex justify-content-between w-100">
                 <div class="user d-flex align-items-center align-content-center ">
-                    <button [matMenuTriggerFor]="userMoreInfo" mat-icon-button class="main-gray-bg main-blck-color">
-                        <mat-icon>person</mat-icon>
+                    <button style="background-image: url('../../../../assets/img/user-male.svg')" [matMenuTriggerFor]="userMoreInfo" mat-icon-button class="main-gray-bg main-blck-color user-pic">
+                        <mat-icon></mat-icon>
                     </button>
 
-                    <strong class="ml-3">TheChats</strong>
+                    <strong class="ml-3 main text-bolder">Chat<strong class="main-green-color">Plus</strong></strong>
                 </div>
                 <div class="icon-links d-flex align-items-center align-content-center">
 
+                    <button matTooltip="Send Email Test" routerLink="/email-test" mat-icon-button class=" main-black-bg">
+                        <mat-icon class="text-white"> email</mat-icon>
+                    </button>
 
-                    <button routerLink="/users" mat-icon-button class=" main-gray-bg main-blck-color">
+                    <button routerLink="/users" mat-icon-button class=" main-gray-bg  ml-3 main-blck-color">
                         <mat-icon>group</mat-icon>
                     </button>
+
 
                     <button [matMenuTriggerFor]="userMoreInfo" mat-icon-button class="main-gray-bg main-blck-color ml-3">
                         <mat-icon>more_vert</mat-icon>
                     </button>
-
-
 
                 </div>
             </div>
             <mat-menu #userMoreInfo="matMenu">
                 <mat-list class="cursor-pointer">
                     <mat-list-item>
-                        <h4 mat-line class="text-bolder">Saint Zion</h4>
-                        <p mat-line class="main-green-color">saint@gmail.com</p>
+                        <h4 mat-line class="text-bolder">{{apiService.LOGGED_IN_USER.firstname}} {{apiService.LOGGED_IN_USER.lastname}}</h4>
+                        <p mat-line class="main-green-color">{{apiService.USER.email}}</p>
                     </mat-list-item>
                 </mat-list>
 
-                <button routerLink="/profile/123456" mat-menu-item>
+                <button routerLink="/profile/{{apiService.LOGGED_IN_USER.id}}" mat-menu-item>
                   <span>Profile</span>
                 </button>
 
-                <button routerLink="/profile/123456" mat-menu-item>
+                <button routerLink="/profile/{{apiService.LOGGED_IN_USER.id}}" mat-menu-item>
                     <span>Settings</span>
-                  </button>
+                </button>
 
-                <button (click)="logOutDialog()" mat-menu-item>
+                <button (click)="sharedService.logOutDialog()" mat-menu-item>
                     <span class="text-danger">Logout</span>
                   </button>
             </mat-menu>
         </mat-toolbar>
 
         <!-- <mat-nav-list class="animated fadeInUp " *ngIf="!bgLoading"> -->
-
+        <!-- searchForm -->
         <mat-nav-list>
             <div style="height: 63px;" class="bg-light px-3 search-form d-flex align-content-center align-items-center">
-                <mat-icon *ngIf="searching" (click)="searching = false" style="cursor: pointer; ">arrow_back</mat-icon>
-                <div class="form w-100 pl-3">
-                    <input (click)="search()" placeholder="Search" class="form-control">
+                <mat-icon *ngIf="searching" (click)="searching = false; searchTyping = false" style="cursor: pointer; ">arrow_back</mat-icon>
+                <form [formGroup]="searchForm" (click)="search()" class="form w-100 pl-3">
+                    <input formControlName="searchInput" (keyup)="searchType()" placeholder="Search" class="form-control">
+                </form>
+            </div>
+            <div *ngIf="searchTyping" class="text-center pt-3">
+                <div class="lds-roller">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+
                 </div>
+
             </div>
             <mat-list>
                 <mat-list-item *ngFor="let user of users" (click)="closeMen(drawer)" routerLink="/chat">
@@ -78,15 +95,14 @@
       </button>
 
 
-            <div class="d-flex justify-content-between w-100">
+            <div class="d-flex justify-content-between w-100 ">
                 <div class="user  d-flex align-items-center align-content-center ">
                     <mat-list>
                         <mat-list-item routerLink="/chat">
                             <div mat-list-icon (click)="drawer.toggle()" class="user-pic-con">
-
                             </div>
                             <span class="user-name text-bolder" mat-line>Saint Zion </span>
-                            <span class="user-desc main-green-color" mat-line>Online {{apiService.CURRENT_CHAT_USER?.id}}</span>
+                            <span class="user-desc main-green-color" mat-line>Online</span>
                         </mat-list-item>
                     </mat-list>
                 </div>
@@ -139,11 +155,11 @@
         </mat-menu>
 
         <!-- Add Content Here -->
-        <div class=" router-outlet  pb-5 bg-light" style="overflow: hidden;">
+        <div class=" router-outlet  pb-5 " style="overflow: hidden; min-height: 100vh;">
             <router-outlet></router-outlet>
         </div>
 
-        <div *ngIf="!sharedService.MSG_LOADING" class="footer shadow">
+        <div *ngIf="!sharedService?.MSG_LOADING" class="footer shadow bg-info">
             <mat-toolbar class="border-top" style="overflow: hidden;">
                 <div class="d-flex  w-100">
                     <div class="icon-links d-flex align-items-center align-content-center mr-3">
@@ -161,7 +177,7 @@
 
 
                     <div class=" d-flex align-items-center align-content-center w-100">
-                        <quill-editor class="w-100" [modules]="quillConfig" placeholder="Type description"></quill-editor>
+                        <quill-editor class="w-100" placeholder="Type description"></quill-editor>
                     </div>
 
                     <div class="icon-links d-flex align-items-center align-content-center">

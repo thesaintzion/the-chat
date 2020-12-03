@@ -24,28 +24,56 @@
 
             <div class="user  d-flex align-items-center align-content-center hide-mobile">
                 <mat-list>
-                    <mat-list-item routerLink="/profile/4937651223">
-                        <div mat-list-icon class="user-pic-con"></div>
-                        <strong class="user-name" mat-line>Saint Zion Success</strong>
+                    <mat-list-item>
+                        <div mat-list-icon class="user-pic-con" mat-list-icon style="background-image: url('../../../../assets/img/user-male.svg')" [matMenuTriggerFor]="userMoreInfo" mat-icon-button>
+                        </div>
+                        <strong mat-line class="user-name">{{apiService.LOGGED_IN_USER.firstname}} {{apiService.LOGGED_IN_USER.lastname}}</strong>
 
                     </mat-list-item>
                 </mat-list>
             </div>
-            <div class="icon-links d-flex align-items-center align-content-center ">
 
-                <button routerLink="/chat" mat-icon-button class="main-gray-bg justify-content-center d-flex align-items-center align-content-center">
+            <div class="icon-links d-flex align-items-center align-content-center ">
+                <button routerLink="/email-test" routerLinkActive="main-layout-active" mat-icon-button class="main-gray-bg justify-content-center d-flex align-items-center align-content-center">
+                    <mat-icon>email</mat-icon>
+                </button>
+
+                <button routerLink="/chat" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="main-layout-active" mat-icon-button class="main-gray-bg ml-4 justify-content-center d-flex align-items-center align-content-center">
                     <mat-icon> chat</mat-icon>
                 </button>
-                <button routerLink="/profile/123456" mat-icon-button class="ml-4  main-gray-bg justify-content-center d-flex align-items-center align-content-center">
+
+                <button routerLink="/profile/{{apiService.LOGGED_IN_USER.id}}" routerLinkActive="main-layout-active" mat-icon-button class="ml-4  main-gray-bg justify-content-center d-flex align-items-center align-content-center">
                     <mat-icon>person</mat-icon>
                 </button>
-                <button routerLink="/users" mat-icon-button class="ml-4 main-gray-bg justify-content-center d-flex align-items-center align-content-center">
+
+                <button routerLink="/users" routerLinkActive="main-layout-active" mat-icon-button class="ml-4 main-gray-bg justify-content-center d-flex align-items-center align-content-center">
                     <mat-icon>group</mat-icon>
                 </button>
             </div>
+
+
         </div>
     </mat-toolbar>
+    <mat-menu #userMoreInfo="matMenu">
+        <mat-list class="cursor-pointer">
+            <mat-list-item>
+                <h4 mat-line class="text-bolder">{{apiService.LOGGED_IN_USER.firstname}} {{apiService.LOGGED_IN_USER.lastname}}</h4>
+                <p mat-line class="main-green-color">{{apiService.LOGGED_IN_USER.email}}</p>
+            </mat-list-item>
+        </mat-list>
 
+        <a routerLink="/profile/{{apiService.LOGGED_IN_USER.id}}" mat-menu-item>
+            <span>Profile</span>
+        </a>
+
+        <button routerLink="/profile/{{apiService.LOGGED_IN_USER.id}}" mat-menu-item>
+            <span>Settings</span>
+        </button>
+
+        <button (click)="sharedService.logOutDialog()" mat-menu-item>
+            <span class="text-danger">Logout</span>
+          </button>
+    </mat-menu>
     <router-outlet>
     </router-outlet>
 

@@ -7,7 +7,15 @@ import { Router } from '@angular/router';
 import { SharedDialogComponent } from '../../_dialog/shared-dialog/shared-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { SharedService } from 'src/app/services/shared.service';
+import { FormBuilder, Validators } from '@angular/forms';
 
+export interface User {
+  id: string;
+  name: string;
+  status:string;
+  newMsg:string;
+  unreadMsg: boolean
+}
 
 @Component({
   selector: 'app-chat-layout',
@@ -19,6 +27,8 @@ bgLoading = true;
 showSearchForm = false;
 users = [];
 searching = false;
+searchTyping = false;
+searchForm;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -28,11 +38,9 @@ searching = false;
 
   constructor(
      private breakpointObserver: BreakpointObserver, 
-     private apiService: ApiService, 
-     private router: Router,
-     private dialog: MatDialog,
-     private sharedService: SharedService,
-    
+     public apiService: ApiService, 
+     public sharedService: SharedService,
+     private formBuilder: FormBuilder
      ) {
     let newUser = [
       {
@@ -75,11 +83,40 @@ searching = false;
   ];
 
   this.users = newUser;
+
+
+this.searchForm = this.formBuilder.group({
+  searchInput: ['']
+})
     
   }
 
   search(){
 this.searching = true;
+  }
+
+  searchType(){
+    this.searchTyping = true;
+    let searchInput = this.searchForm.value.searchInput.toLowerCase();
+
+    const filterData = this.users.filter(users => {
+      console.log(users.name.toLowerCase().includes(searchInput), searchInput);
+      return users.name.toLowerCase().includes(searchInput);
+    });
+
+    console.log('log', filterData)
+
+
+  
+    // if(this.users.toUppercase().indexOf(searchInput))
+    // const result: any = this.users.filter((user) => {
+    //   if(user.name.toUpperCase().indexOf(searchInput) > -1){
+    //     console.log(user);
+
+    //   }
+    // });
+    
+    
   }
 
   // close menu in phone size
@@ -95,65 +132,19 @@ closeMen(sidenav){
       });
 }
 
-logOutDialog(): void {
-  let message = 'Are you sure you want to logout?'
-  const  dialogRef = this.dialog.open(SharedDialogComponent, {  
-     width: '300px',
-     data:{message: message},
-  });
-
-  dialogRef.afterClosed().subscribe(result => {
-   if(result) {
-    console.log(result);
-    this.sharedService.openSnackBar('Logging Out.. Bye!!', '', 3000, '');
-    setTimeout( ()=>{
-localStorage.removeItem('XXX_CHAT_PLUS');
-this.router.navigate(['/auth/login']);
-    }, 3000);
-  }
- });
- }
-
-
-
-
-// GET USER PROFILE
-profile(){
-  this.apiService.profile({uid: '1234567'}).subscribe(
-    res => {
-console.log('Profile Responce', res);
-this.apiService.USER.firstname = res.user.firstname;
-this.apiService.USER.lastname = res.user.lastname;
-this.apiService.USER.email = res.user.email;
-console.log(this.apiService.USER);
-    }, 
-    err => {
-console.log('Err on profile', err);
-// localStorage.removeItem('XXX_CHAT_PLUS');
-// this.router.navigate(['/auth/login']);
-    })
-}
-
-
 
 
 
   quillConfig: any = {
-    "modules": {
-      "toolbar": false
-  },
     toolbar: false
   }
 
   ngOnInit(){
-    this.profile();
+    this.apiService.loggedInUserProfile();
     setTimeout( () =>{
 this.bgLoading  = false;
     }, 2000);
 
-
-
-    
    
   }
 
